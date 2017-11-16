@@ -11,16 +11,15 @@ import UIKit
 
 private let kDefaultViewHeight : CGFloat = 40
 private func currenBundle() -> Bundle {
-    
     var bundle: Bundle = Bundle.main
     let framework = Bundle(for: ShineView.classForCoder())
-    if let resource = framework.path(forResource: "ShineView", ofType: "bundle") {
+    if let resource = framework.path(forResource: "ShineHud", ofType: "bundle") {
         bundle = Bundle(path: resource) ?? Bundle.main
     }
     return bundle
 }
 
-class ShineView: UIView {
+public class ShineView: UIView {
 
     @IBOutlet weak var backgroundView: UIView!
     
@@ -30,9 +29,9 @@ class ShineView: UIView {
     
     @IBOutlet weak var customView: UIView!
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet public weak var label: UILabel!
     
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet public weak var detailLabel: UILabel!
     
     @IBOutlet weak var customViewH: NSLayoutConstraint!
     
@@ -59,11 +58,11 @@ class ShineView: UIView {
     /// - progress: 直线型进度条
     /// - roundProgress: 圆形进度条
     /// - custom: 自定义view
-    enum ShineStyle {
+    public enum ShineStyle {
         case normal,activity,cycleLoop,success,error,progress,roundProgress,custom
     }
     
-    enum ShineMaskStyle {
+    public enum ShineMaskStyle {
         case normal,lightGrary
     }
     
@@ -79,7 +78,7 @@ class ShineView: UIView {
         return a
     }()
     
-    lazy var cycleLoop : CycleLoopView = {
+    public lazy var cycleLoop : CycleLoopView = {
        
         let c = CycleLoopView()
         
@@ -89,7 +88,7 @@ class ShineView: UIView {
     
    
     /// 失败成功显示的imageview
-    private lazy var imageView : UIImageView = {
+    lazy var imageView : UIImageView = {
        
         let i  = UIImageView()
         i.frame = CGRect.init(x: 0, y: 0, width: kDefaultViewHeight, height: kDefaultViewHeight)
@@ -99,7 +98,7 @@ class ShineView: UIView {
     }()
     
     /// 圆形进度条
-    lazy var roundProgressView : RoundProgressView = {
+    public lazy var roundProgressView : RoundProgressView = {
         
         let r = RoundProgressView()
         r.frame = CGRect.init(x: 0, y: 0, width: kDefaultViewHeight, height: kDefaultViewHeight)
@@ -109,7 +108,7 @@ class ShineView: UIView {
     
     
     /// 直线型进度条
-    private lazy var progressView : ProgressView = {
+    public lazy var progressView : ProgressView = {
        
         let p = ProgressView()
         
@@ -121,7 +120,7 @@ class ShineView: UIView {
     weak var parent : UIView?
     
     /// 类型
-    var style : ShineStyle = .normal{
+    public var style : ShineStyle = .normal{
         didSet{
             for v in customView.subviews {
                 
@@ -133,47 +132,47 @@ class ShineView: UIView {
         }
     }
     
-    var maskStyle : ShineMaskStyle = .normal
+    public var maskStyle : ShineMaskStyle = .normal
     
     /// 标题
-    var title : String = ""{
+    public var title : String = ""{
         didSet{
             label.text = title
         }
     }
     
     /// 副标题
-    var detailTitle : String = ""{
+    public var detailTitle : String = ""{
         didSet{
             detailLabel.text = detailTitle
         }
     }
     
     /// 从屏幕中间向右偏移量
-    var ofsetX : CGFloat = 0{
+    public var ofsetX : CGFloat = 0{
         didSet{
             positionX.constant = ofsetX
         }
     }
     /// 从屏幕中间向下偏移量
-    var ofsetY : CGFloat = 0{
+    public var ofsetY : CGFloat = 0{
         didSet{
             positionY.constant = ofsetY
         }
     }
     
-    var contentWidth : CGFloat = 80{
+    public var contentWidth : CGFloat = 80{
         didSet{
             contentViewWidth.constant = contentWidth
         }
     }
     
     /// 内容区域圆角
-    var radius : CGFloat = 5.0
+    public var radius : CGFloat = 5.0
     
    
     /// 内边距
-    var margin : CGFloat?{
+    public var margin : CGFloat?{
         didSet{
             customTopSpace.constant = margin!
             customLeftSpace.constant = margin!
@@ -182,16 +181,16 @@ class ShineView: UIView {
     }
     
     /// 消失时长 默认hiden 立即消失
-    var afterDelay : TimeInterval = 0.2
+    public var afterDelay : TimeInterval = 0.2
     
-    var effectStyle : UIBlurEffectStyle = .light{
+    public var effectStyle : UIBlurEffectStyle = .light{
         didSet{
             effectView.effect = UIBlurEffect.init(style: effectStyle)
         }
     }
     
     /// 进度
-    var progress : CGFloat{
+    public var progress : CGFloat{
         set{
             if style == .roundProgress
             {
@@ -217,7 +216,7 @@ class ShineView: UIView {
     
     
     /// 自定义的view
-    fileprivate var diyView : UIView?{
+    public var diyView : UIView?{
         
         didSet{
             
@@ -364,7 +363,7 @@ class ShineView: UIView {
     ///   - detailTitle: 副标题
     ///   - margin: 内边距
     ///   - effectStyle: 毛玻璃样式
-    func show(style : ShineStyle? = nil,maskStyle : ShineMaskStyle? = nil,afterDelay : TimeInterval? = nil,radius : CGFloat? = nil,ofsetX : CGFloat? = nil,ofsetY : CGFloat? = nil,diyView : UIView? = nil,title : String? = nil,detailTitle : String? = nil,margin : CGFloat? = nil,effectStyle : UIBlurEffectStyle? = nil) {
+    public func show(style : ShineStyle? = nil,maskStyle : ShineMaskStyle? = nil,afterDelay : TimeInterval? = nil,radius : CGFloat? = nil,ofsetX : CGFloat? = nil,ofsetY : CGFloat? = nil,diyView : UIView? = nil,title : String? = nil,detailTitle : String? = nil,margin : CGFloat? = nil,effectStyle : UIBlurEffectStyle? = nil) {
         
         if style != nil {
             self.style = style!
@@ -415,7 +414,7 @@ class ShineView: UIView {
         
     }
     
-    func hiden(afterDelay : TimeInterval? = nil)  {
+    public func hiden(afterDelay : TimeInterval? = nil)  {
         
         if afterDelay != nil {
             self.afterDelay = afterDelay!
@@ -438,7 +437,7 @@ class ShineView: UIView {
     
     
     
-    override func willMove(toSuperview newSuperview: UIView?) {
+    override public func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)
         
         
@@ -463,24 +462,24 @@ class ShineView: UIView {
     
 }
 
-class CycleLoopView : UIView{
+public class CycleLoopView : UIView{
     
-    var progressWidth : CGFloat = 2.0
+    public var progressWidth : CGFloat = 2.0
     
-    var progressColor : UIColor = UIColor.white
+    public var progressColor : UIColor = UIColor.white
     
-    var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1)
+    public var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1)
     
-    var anmlayer : CALayer?
+    public var anmlayer : CALayer?
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         self.backgroundColor = .clear
     }
     
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
         layer.removeAllAnimations()
         
@@ -559,9 +558,9 @@ class CycleLoopView : UIView{
     
 }
 
-class ProgressView: UIView {
+public class ProgressView: UIView {
     
-    var progress : CGFloat = 0.0{
+    public var progress : CGFloat = 0.0{
         didSet{
             
             progressView.progress = Float(progress)
@@ -572,7 +571,7 @@ class ProgressView: UIView {
         
     }
     
-    lazy var progressLabel : UILabel = {
+    public lazy var progressLabel : UILabel = {
         
         let l = UILabel()
         
@@ -588,7 +587,7 @@ class ProgressView: UIView {
         return l
     }()
     
-    lazy var progressView : UIProgressView  = {
+    public lazy var progressView : UIProgressView  = {
        
         let p = UIProgressView()
        
@@ -600,24 +599,24 @@ class ProgressView: UIView {
     }()
     
     
-    var text : String?
+    public var text : String?
     
-    var progressWidth : CGFloat = 3.0
+    public var progressWidth : CGFloat = 3.0
     
-    var progressColor : UIColor = UIColor.white{
+    public var progressColor : UIColor = UIColor.white{
         didSet{
             self.progressView.progressTintColor = progressColor
         }
     }
     
-    var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1) {
+    public var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1) {
         didSet{
             self.progressView.trackTintColor = bgColor
         }
     }
     
     
-    override func layoutSubviews() {
+    override public func layoutSubviews() {
         super.layoutSubviews()
         
         
@@ -651,9 +650,9 @@ class ProgressView: UIView {
 
 
 /// 圆形进度条
-class RoundProgressView: UIView {
+public class RoundProgressView: UIView {
     
-    var progress : CGFloat = 0.0{
+    public var progress : CGFloat = 0.0{
         didSet{
            
             setNeedsDisplay()
@@ -664,7 +663,7 @@ class RoundProgressView: UIView {
         
     }
     
-    lazy var progressLabel : UILabel = {
+    public lazy var progressLabel : UILabel = {
        
         let l = UILabel()
         
@@ -681,13 +680,13 @@ class RoundProgressView: UIView {
     }()
     
     
-    var text : String?
+    public var text : String?
     
-    var progressWidth : CGFloat = 2.0
+    public var progressWidth : CGFloat = 2.0
     
-    var progressColor : UIColor = UIColor.white
+    public var progressColor : UIColor = UIColor.white
 
-    var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1)
+    public var bgColor : UIColor =  UIColor.white.withAlphaComponent(0.1)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -696,11 +695,11 @@ class RoundProgressView: UIView {
         
     }
    
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
         let size = rect.size
         
@@ -752,10 +751,11 @@ class RoundProgressView: UIView {
 extension UIView {
     
     struct ShineRuntime {
+        
         static let RuntimeKey = UnsafeRawPointer.init(bitPattern: "ShineRuntimeKey".hashValue)
     }
     
-    var shine : ShineView?{
+    public var shine : ShineView?{
         set{
             
             objc_setAssociatedObject(self, UIView.ShineRuntime.RuntimeKey!, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
@@ -763,11 +763,13 @@ extension UIView {
         
         get{
             
+            print(currenBundle())
+            print(Bundle.main)
             var s : ShineView? = objc_getAssociatedObject(self, UIView.ShineRuntime.RuntimeKey!) as? ShineView
             
             if s == nil {
                 
-                s  = (currenBundle().loadNibNamed("ShineView", owner: nil, options: nil)?.last as? ShineView)!
+                s  = (currenBundle().loadNibNamed("ShineView", owner: currenBundle(), options: nil)?.last as? ShineView)!
                 
                 self.shine = s!
                 
