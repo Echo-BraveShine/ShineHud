@@ -1,8 +1,9 @@
-![(logo)](https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4)
-# ShineHud
 
+<img width="500" height="500" src="https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4"/>
 
-![](http://recordit.co/mhepbl000B) ![](http://g.recordit.co/jR339GbkaM.gif)
+# ShineHud   基于Swift4.0 轻量级HUD框架
+
+<img width="500" height="500" src="http://g.recordit.co/jR339GbkaM.gif"/>
 
 ### 安装ShineHud
 通过cocoapods安装
