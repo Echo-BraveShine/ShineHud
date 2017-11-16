@@ -1,5 +1,8 @@
+![(logo)](https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4)
 # ShineHud
 
+
+![](http://recordit.co/mhepbl000B) ![](http://g.recordit.co/jR339GbkaM.gif)
 
 ### 安装ShineHud
 通过cocoapods安装
@@ -42,6 +45,49 @@ shine?.detailTitle = "菊花3秒后消失"
 shine?.show()
 ```
 
+其中HUD类型有
+```swift
+/// HUD的类型
+///
+/// - normal: 默认只有文字
+/// - activity: 菊花转圈
+/// - cycleLoop: 圆形跑圈
+/// - success: 成功图标
+/// - error: 失败图标
+/// - progress: 直线型进度条
+/// - roundProgress: 圆形进度条
+/// - custom: 自定义view
+public enum ShineStyle {
+case normal,activity,cycleLoop,success,error,progress,roundProgress,custom
+}
+```
+HUD圆角大小
+```swift
+/// 内容区域圆角
+public var radius : CGFloat = 5.0
+```
 
+HUD内边距
+```swift
+public var margin : CGFloat?
+```
+
+显示时长
+```swift
+/// 消失时长 默认hiden 立即消失
+public var afterDelay : TimeInterval = 0.2
+```
+
+progress进度
+```swift
+/// 进度
+public var progress : CGFloat
+```
+
+自定义的view
+```swift
+/// 自定义的view
+public var diyView : UIView?
+```
 
 
