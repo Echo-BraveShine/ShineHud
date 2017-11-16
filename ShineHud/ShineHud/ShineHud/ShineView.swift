@@ -10,14 +10,8 @@ import UIKit
 
 
 private let kDefaultViewHeight : CGFloat = 40
-private func currenBundle() -> Bundle {
-    var bundle: Bundle = Bundle.main
-    let framework = Bundle(for: ShineView.classForCoder())
-    if let resource = framework.path(forResource: "ShineHud", ofType: "bundle") {
-        bundle = Bundle(path: resource) ?? Bundle.main
-    }
-    return bundle
-}
+private let kCurrenBundle : Bundle = Bundle.init(for: ShineView.classForCoder())
+
 
 public class ShineView: UIView {
 
@@ -286,13 +280,13 @@ public class ShineView: UIView {
             diyView = activity
             break
         case .success:
-            let image = UIImage.init(named: "shine_success", in: currenBundle(), compatibleWith: nil)
+            let image = UIImage.init(named: "shine_success", in: kCurrenBundle, compatibleWith: nil)
             imageView.image = image
             imageView.frame = CGRect.init(origin: CGPoint(), size: (image?.size)!)
             diyView = imageView
             break
         case .error:
-            let image = UIImage.init(named: "shine_error", in: currenBundle(), compatibleWith: nil)
+            let image = UIImage.init(named: "shine_error", in: kCurrenBundle, compatibleWith: nil)
 
             imageView.image = image
             imageView.frame = CGRect.init(origin: CGPoint(), size: (image?.size)!)
@@ -516,7 +510,7 @@ public class CycleLoopView : UIView{
         
         let maskLayer = CALayer()
         
-        let maskImage = UIImage.init(named: "cycle_loop_mask", in: currenBundle(), compatibleWith: nil)
+        let maskImage = UIImage.init(named: "cycle_loop_mask", in: kCurrenBundle, compatibleWith: nil)
         
         maskLayer.contents = maskImage?.cgImage
         
@@ -763,13 +757,11 @@ extension UIView {
         
         get{
             
-            print(currenBundle())
-            print(Bundle.main)
             var s : ShineView? = objc_getAssociatedObject(self, UIView.ShineRuntime.RuntimeKey!) as? ShineView
             
             if s == nil {
                 
-                s  = (currenBundle().loadNibNamed("ShineView", owner: currenBundle(), options: nil)?.last as? ShineView)!
+                s  = (kCurrenBundle.loadNibNamed("ShineView", owner: kCurrenBundle, options: nil)?.last as? ShineView)!
                 
                 self.shine = s!
                 

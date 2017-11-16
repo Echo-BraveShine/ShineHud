@@ -21,10 +21,10 @@ Pod::Spec.new do |s|
 
   s.platform = :ios, "9.0"
 
-  s.source_files  = "ShineHud/ShineHud/*.{swift}"
+  s.source_files  = "ShineHud/ShineHud/ShineHud/*.{swift}"
 
-  s.framework  = "UIKit","ShineHud"
-  s.resources = ['ShineHud/ShineHud/Resource/*.{png,xib,plist}']
+  s.framework  = "UIKit"
+  s.resources = 'ShineHud/ShineHud/Resource/*.{png,xib,plist}'
 
 
 
