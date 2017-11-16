@@ -1,5 +1,4 @@
-
-<img width="80" height="80" src="https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4"/>
+<img width="80" height="80" border-radius = "40" src="https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4"/>
 
 # ShineHud   基于Swift4.0 轻量级HUD框架
 
