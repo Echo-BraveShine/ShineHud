@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "ShineHud"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "Swift 轻量级HUD框架"
 
 
@@ -20,11 +20,11 @@ Pod::Spec.new do |s|
 
   s.author             = { "BraceShine" => "1239383708@qq.com" }
 
-  s.source       = { :git => "https://github.com/Echo-BraveShine/ShineHud.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/Echo-BraveShine/ShineHud.git", :tag => "v#{s.version}" }
 
   s.platform = :ios, "9.0"
 
-  s.source_files  = "ShineHud", "ShineHud/ShineHud/*.{swift}"
+  s.source_files  = "ShineHud/ShineHud/SHineHud/*.{swift}"
 
   s.framework  = "UIKit","Foundation"
   s.resources = ['ShineHud/ShineHud/Resource/*.{png,xib,plist}']

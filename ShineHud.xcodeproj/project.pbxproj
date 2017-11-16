@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F3438C51FBD25BC00B2C50F /* ShineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3438C41FBD25BC00B2C50F /* ShineView.swift */; };
 		5F8E335E1FBC715000062B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E335D1FBC715000062B0F /* AppDelegate.swift */; };
 		5F8E33651FBC715000062B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33641FBC715000062B0F /* Assets.xcassets */; };
 		5F8E33681FBC715000062B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33661FBC715000062B0F /* LaunchScreen.storyboard */; };
 		5F8E339D1FBC71AA00062B0F /* .swift-version in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33931FBC71AA00062B0F /* .swift-version */; };
-		5F8E339E1FBC71AA00062B0F /* ShineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F8E33941FBC71AA00062B0F /* ShineView.swift */; };
 		5F8E339F1FBC71AA00062B0F /* shine_success@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33961FBC71AA00062B0F /* shine_success@3x.png */; };
 		5F8E33A01FBC71AA00062B0F /* shine_success@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33971FBC71AA00062B0F /* shine_success@2x.png */; };
 		5F8E33A11FBC71AA00062B0F /* cycle_loop_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F8E33981FBC71AA00062B0F /* cycle_loop_mask@2x.png */; };
@@ -24,13 +24,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F3438C41FBD25BC00B2C50F /* ShineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShineView.swift; sourceTree = "<group>"; };
 		5F8E335A1FBC715000062B0F /* ShineHud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShineHud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F8E335D1FBC715000062B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5F8E33641FBC715000062B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5F8E33671FBC715000062B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5F8E33691FBC715000062B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F8E33931FBC71AA00062B0F /* .swift-version */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ".swift-version"; sourceTree = "<group>"; };
-		5F8E33941FBC71AA00062B0F /* ShineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShineView.swift; sourceTree = "<group>"; };
 		5F8E33961FBC71AA00062B0F /* shine_success@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shine_success@3x.png"; sourceTree = "<group>"; };
 		5F8E33971FBC71AA00062B0F /* shine_success@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shine_success@2x.png"; sourceTree = "<group>"; };
 		5F8E33981FBC71AA00062B0F /* cycle_loop_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cycle_loop_mask@2x.png"; sourceTree = "<group>"; };
@@ -53,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F3438C31FBD25BC00B2C50F /* ShineHud */ = {
+			isa = PBXGroup;
+			children = (
+				5F3438C41FBD25BC00B2C50F /* ShineView.swift */,
+			);
+			path = ShineHud;
+			sourceTree = "<group>";
+		};
 		5F8E33511FBC715000062B0F = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				5F8E33931FBC71AA00062B0F /* .swift-version */,
-				5F8E33941FBC71AA00062B0F /* ShineView.swift */,
+				5F3438C31FBD25BC00B2C50F /* ShineHud */,
 				5F8E33951FBC71AA00062B0F /* Resource */,
 			);
 			path = ShineHud;
@@ -189,7 +197,7 @@
 			files = (
 				5F8E33A71FBC71F300062B0F /* ViewController.swift in Sources */,
 				5F8E335E1FBC715000062B0F /* AppDelegate.swift in Sources */,
-				5F8E339E1FBC71AA00062B0F /* ShineView.swift in Sources */,
+				5F3438C51FBD25BC00B2C50F /* ShineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
