@@ -3,7 +3,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ShineHud"
-  s.version      = "1.0.0"
+  s.version      = "1.1.0"
   s.summary      = "Swift 轻量级HUD框架"
 
   s.description  = <<-DESC

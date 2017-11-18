@@ -1,13 +1,13 @@
 <img width="80" height="80" border-radius = "40" src="https://avatars0.githubusercontent.com/u/26161584?s=400&u=16aa790577ba20eedb394841b66d1fcfc300c3c1&v=4"/>
 
-# ShineHud   基于Swift4.0 轻量级HUD框架
+# ShineHud   基于Swift4.0 轻量级HUD框架 支持横屏
 
 <img width="500" height="500" src="http://g.recordit.co/jR339GbkaM.gif"/>
 
 ### 安装ShineHud
 通过cocoapods安装
 ```ruby
-pod 'ShineHud', '~> 1.0.0'
+pod 'ShineHud', '~> 1.1.0'
 ```
 
 
@@ -35,7 +35,7 @@ public func show(style : ShineStyle? = nil,maskStyle : ShineMaskStyle? = nil,aft
 view.shine?.show(style: <#T##ShineView.ShineStyle?#>, maskStyle: <#T##ShineView.ShineMaskStyle?#>, afterDelay: <#T##TimeInterval?#>, radius: <#T##CGFloat?#>, ofsetX: <#T##CGFloat?#>, ofsetY: <#T##CGFloat?#>, diyView: <#T##UIView?#>, title: <#T##String?#>, detailTitle: <#T##String?#>, margin: <#T##CGFloat?#>, effectStyle: <#T##UIBlurEffectStyle?#>)
 ```
 
-或者通过初始化调用
+或者通过初始化调用 1.1.0之后的版本可以先show() 再更改属性
 ```swift
 let shine = view.shine
 shine?.style = .activity
