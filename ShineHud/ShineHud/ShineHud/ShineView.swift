@@ -56,10 +56,14 @@ public class ShineView: UIView {
         case normal,activity,cycleLoop,success,error,progress,roundProgress,custom
     }
     
+    /// 背景颜色样式  请勿使用shine.backgroundcolor
+    ///
+    /// - normal: 默认透明颜色
+    /// - lightGrary: 亮灰色
+    /// - custom: 自定义的颜色
     public enum ShineMaskStyle {
-        case normal,lightGrary
+        case normal,lightGrary,custom(UIColor)
     }
-    
     
     
     /// 菊花转圈
@@ -72,6 +76,7 @@ public class ShineView: UIView {
         return a
     }()
     
+    /// 圆形跑圈
     public lazy var cycleLoop : CycleLoopView = {
        
         let c = CycleLoopView()
@@ -126,7 +131,12 @@ public class ShineView: UIView {
         }
     }
     
-    public var maskStyle : ShineMaskStyle = .normal
+    /// 背景样式 请勿使用shine.backgroundcolor
+    public var maskStyle : ShineMaskStyle = .normal{
+        didSet{
+            updateBackgroundCloor()
+        }
+    }
     
     /// 标题
     public var title : String = ""{
@@ -155,6 +165,7 @@ public class ShineView: UIView {
         }
     }
     
+    /// 默认最小宽度
     public var contentWidth : CGFloat = 80{
         didSet{
             contentViewWidth.constant = contentWidth
@@ -162,7 +173,18 @@ public class ShineView: UIView {
     }
     
     /// 内容区域圆角
-    public var radius : CGFloat = 5.0
+    public var radius : CGFloat {
+        set{
+            contentView.layer.cornerRadius = newValue
+            
+            contentView.layer.masksToBounds = true
+        }
+        
+        get{
+            
+            return contentView.layer.cornerRadius
+        }
+    }
     
    
     /// 内边距
@@ -174,9 +196,14 @@ public class ShineView: UIView {
         }
     }
     
-    /// 消失时长 默认hiden 立即消失
-    public var afterDelay : TimeInterval = 0.2
+    /// 显示时长 设置该属性会在设定时间后隐藏  不设定永不隐藏，隐藏请调用huden
+    public var afterDelay : TimeInterval = 0.2{
+        didSet{
+            hiden(afterDelay: afterDelay)
+        }
+    }
     
+    /// 内容区域毛玻璃样式
     public var effectStyle : UIBlurEffectStyle = .light{
         didSet{
             effectView.effect = UIBlurEffect.init(style: effectStyle)
@@ -225,19 +252,30 @@ public class ShineView: UIView {
                 diyView?.frame = CGRect.init(x: 0, y: 0, width: rect.size.width, height: rect.size.height)
             }
             
-//            if style == .normal {
-//                style = .custom
-//            }
-            
             customView.addSubview(diyView!)
         }
     }
     
    
+    /// 更新背景颜色样式
+    func updateBackgroundCloor()  {
+        switch maskStyle {
+        case .lightGrary:
+            self.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+            break
+        case .custom(let color):
+            self.backgroundView.backgroundColor = color
+            break
+        default:
+            self.backgroundView.backgroundColor = .clear
+            break
+            
+        }
+    }
     
    
+    /// 更新内容布局 关键方法
     @objc func updateUI() {
-        
         
         label.text = title
         
@@ -245,31 +283,27 @@ public class ShineView: UIView {
     
         customView.backgroundColor = .clear
         
-        contentView.layer.cornerRadius = radius
+//        contentView.layer.cornerRadius = radius
         
         contentView.layer.masksToBounds = true
         
-        if margin == nil {//margin 默认为5
-            margin = 5
+        updateBackgroundCloor()
+        
+        if radius == 0.0 {// radius 默认为10
+            radius = 10
+        }
+        print(radius)
+        
+        if margin == nil {//margin 默认为8
+            margin = 8
         }
         
-        
+        ///默认纯文本状态下，标题和文字均未设置则显示默认字样
         if title.count == 0 && detailTitle.count == 0 && style == .normal {
-            label.text = "这是标题"
-            
-            detailLabel.text = "这是内容"
+            label.text = "ShineHud"
+            detailLabel.text = "You did not set the text"
         }
         
-        
-        switch maskStyle {
-        case .lightGrary:
-            self.backgroundView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-            break
-        default:
-            self.backgroundView.backgroundColor = .clear
-            break
-            
-        }
         
         switch style {
             
@@ -329,7 +363,6 @@ public class ShineView: UIView {
             let rect2 = diyView?.bounds           
             
             diyView?.frame = CGRect.init(x: (rect1.size.width - (rect2?.size.width)!)/2 , y: (rect1.size.height - (rect2?.size.height)!)/2, width: (rect2?.size.width)!, height: (rect2?.size.height)!)
-            
         
         }
         
@@ -368,7 +401,6 @@ public class ShineView: UIView {
         
         if afterDelay != nil {
             self.afterDelay = afterDelay!
-            hiden()
         }
         
         if radius != nil {
@@ -410,17 +442,11 @@ public class ShineView: UIView {
     
     public func hiden(afterDelay : TimeInterval? = nil)  {
         
-        if afterDelay != nil {
-            self.afterDelay = afterDelay!
-        }
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + self.afterDelay, execute: {
     
             self.layer.removeAllAnimations()
 
             self.removeFromSuperview()
-    
-            
             
             self.parent?.shine = nil
             

@@ -23,8 +23,13 @@ class ViewController: UIViewController {
     
     @IBAction func normalCliock(_ sender: UIButton) {
         
-        view.shine?.show(style: .normal,afterDelay:3, title:"人和人的差距",detailTitle : "她摇头否认，跟我讲，办公室里的一位同事，能力很强，其实也没什么，说白了无非是阅读量大一些，肚子里墨水多一点儿，但就这一条，足以构成一种碾压级别的优势，人家说出的话，写出的东西，跟你一样，都是汉语，但愣是比你有水平。你想缩小差距吧，还心知这不是一天两天的功夫；有一种被欺负的感觉，却也心服口服，望洋兴叹，只能受着。")
-    
+        view.shine?.show(style: .normal, title:"人和人的差距",detailTitle : "她摇头否认，跟我讲，办公室里的一位同事，能力很强，其实也没什么，说白了无非是阅读量大一些，肚子里墨水多一点儿，但就这一条，足以构成一种碾压级别的优势，人家说出的话，写出的东西，跟你一样，都是汉语，但愣是比你有水平。你想缩小差距吧，还心知这不是一天两天的功夫；有一种被欺负的感觉，却也心服口服，望洋兴叹，只能受着。")
+        view.shine?.maskStyle = .custom(UIColor.red.withAlphaComponent(0.2))
+        view.shine?.radius = 10
+        view.shine?.margin = 10
+        view.shine?.effectStyle = .dark
+        view.shine?.afterDelay = 3
+           
     }
     
     @IBAction func activityClick(_ sender: Any) {
